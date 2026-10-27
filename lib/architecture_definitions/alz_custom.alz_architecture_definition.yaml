@@ -1,0 +1,68 @@
+"management_groups":
+- "archetypes":
+  - "root_custom"
+  - "amba_root"
+  "display_name": "Factory-ALZ-Mgmt-Group_AMER"
+  "exists": true
+  "id": "FactoryALZManagementGroup"
+  "parent_id": null
+- "archetypes":
+  - "platform_custom"
+  "display_name": "Platform"
+  "exists": false
+  "id": "mg-puckett-platform"
+  "parent_id": "FactoryALZManagementGroup"
+- "archetypes":
+  - "landing_zones_custom"
+  "display_name": "Landing Zones"
+  "exists": false
+  "id": "mg-puckett-landingzones"
+  "parent_id": "FactoryALZManagementGroup"
+- "archetypes":
+  - "corp_custom"
+  "display_name": "Corp"
+  "exists": false
+  "id": "mg-puckett-corp"
+  "parent_id": "mg-puckett-landingzones"
+- "archetypes": []
+  "display_name": "CMMC Enclave"
+  "exists": false
+  "id": "mg-puckett-cmmc"
+  "parent_id": "mg-puckett-landingzones"
+- "archetypes":
+  - "sandbox_custom"
+  "display_name": "Sandbox"
+  "exists": false
+  "id": "mg-puckett-sandbox"
+  "parent_id": "FactoryALZManagementGroup"
+- "archetypes":
+  - "security_custom"
+  "display_name": "Security"
+  "exists": false
+  "id": "mg-puckett-security"
+  "parent_id": "mg-puckett-platform"
+- "archetypes":
+  - "management_custom"
+  "display_name": "Management"
+  "exists": false
+  "id": "mg-puckett-management"
+  "parent_id": "mg-puckett-platform"
+- "archetypes":
+  - "connectivity_custom"
+  "display_name": "Connectivity"
+  "exists": false
+  "id": "mg-puckett-connectivity"
+  "parent_id": "mg-puckett-platform"
+- "archetypes":
+  - "identity_custom"
+  "display_name": "Identity"
+  "exists": false
+  "id": "mg-puckett-identity"
+  "parent_id": "mg-puckett-platform"
+- "archetypes":
+  - "decommissioned_custom"
+  "display_name": "Decommissioned"
+  "exists": false
+  "id": "mg-puckett-decommissioned"
+  "parent_id": "FactoryALZManagementGroup"
+"name": "alz_custom"
