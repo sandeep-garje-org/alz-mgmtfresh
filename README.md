@@ -51,6 +51,12 @@ inspection certificates are added. Existing module-generated hub routing remains
 The VPN and Key Vault groups remain empty; no VPN resources are relocated and no
 Key Vault or Puckett-owned Entra Connect server is created.
 
+The Premium Firewall policy uses IDPS Alert mode, configured through
+`firewall_policy.intrusion_detection.mode = "Alert"` in
+[platform-landing-zone.auto.tfvars](platform-landing-zone.auto.tfvars).
+IDPS detects and alerts without blocking matching traffic; inspection requires
+the running Premium Firewall to be attached to this policy.
+
 Bootstrap owns its group and unpeered VNet, runners, state storage, private endpoints,
 registry, and identities. The optional `bootstrap_resource_group_name` input selects
 consolidation; null preserves the original separate-group behavior for other callers.
