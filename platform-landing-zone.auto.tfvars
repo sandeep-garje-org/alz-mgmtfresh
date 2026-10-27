@@ -454,6 +454,9 @@ hub_virtual_networks = {
     firewall_policy = {
       name = "$${primary_firewall_policy_name}"
       sku  = "$${primary_firewall_sku_tier}"
+      intrusion_detection = {
+        mode = "Alert"
+      }
     }
     virtual_network_gateways = {
       subnet_address_prefix = "$${primary_gateway_subnet_address_prefix}"
