@@ -23,3 +23,25 @@ jobs:
     with:
       root_module_folder_relative_path: '.'
       terraform_cli_version: ${{ inputs.terraform_cli_version }}
+
+  network_configuration_tests:
+    name: Network configuration regression tests
+    needs: validate_and_plan
+    runs-on: self-hosted
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Install Terraform
+        uses: hashicorp/setup-terraform@dfe3c3f87815947d99a8997f908cb6525fc44e9e # v4.0.1
+        with:
+          terraform_wrapper: false
+          terraform_version: ${{ inputs.terraform_cli_version || '1.14.9' }}
+
+      - name: Initialize test dependencies
+        run: terraform init -backend=false -input=false
+
+      - name: Test network configuration
+        run: terraform test -filter=tests/network_layout.tftest.hcl -no-color
