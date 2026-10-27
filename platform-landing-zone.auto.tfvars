@@ -442,12 +442,18 @@ hub_virtual_networks = {
       default_ip_configuration = {
         public_ip_config = {
           name = "$${primary_firewall_public_ip_name}"
+          ip_tags = {
+            FirstPartyUsage = "/Unprivileged"
+          }
         }
       }
       management_ip_enabled = "$${primary_firewall_management_ip_enabled}"
       management_ip_configuration = {
         public_ip_config = {
           name = "$${primary_firewall_management_public_ip_name}"
+          ip_tags = {
+            FirstPartyUsage = "/Unprivileged"
+          }
         }
       }
     }
@@ -479,12 +485,18 @@ hub_virtual_networks = {
             # name = "vnetGatewayConfigactive_active_1"  # For backwards compatibility with previous naming, uncomment this line
             public_ip = {
               name = "$${primary_virtual_network_gateway_vpn_public_ip_name_1}"
+              ip_tags = {
+                FirstPartyUsage = "/Unprivileged"
+              }
             }
           }
           active_active_2 = {
             # name = "vnetGatewayConfigactive_active_2"  # For backwards compatibility with previous naming, uncomment this line
             public_ip = {
               name = "$${primary_virtual_network_gateway_vpn_public_ip_name_2}"
+              ip_tags = {
+                FirstPartyUsage = "/Unprivileged"
+              }
             }
           }
         }
