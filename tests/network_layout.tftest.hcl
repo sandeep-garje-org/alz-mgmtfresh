@@ -88,6 +88,17 @@ run "network_configuration" {
 
   assert {
     condition = (
+      output.outputs.hub_virtual_networks.primary.firewall.default_ip_configuration.public_ip_config.ip_tags["FirstPartyUsage"] == "/Unprivileged" &&
+      output.outputs.hub_virtual_networks.primary.firewall.management_ip_configuration.public_ip_config.ip_tags["FirstPartyUsage"] == "/Unprivileged" &&
+      output.outputs.hub_virtual_networks.primary.virtual_network_gateways.vpn.ip_configurations.active_active_1.public_ip.ip_tags["FirstPartyUsage"] == "/Unprivileged" &&
+      output.outputs.hub_virtual_networks.primary.virtual_network_gateways.vpn.ip_configurations.active_active_2.public_ip.ip_tags["FirstPartyUsage"] == "/Unprivileged" &&
+      output.outputs.hub_virtual_networks.primary.firewall_policy.intrusion_detection.mode == "Alert"
+    )
+    error_message = "Firewall and VPN public IPs must retain platform IP tags, and the firewall policy must retain IDPS Alert mode."
+  }
+
+  assert {
+    condition = (
       output.outputs.hub_virtual_networks.primary.private_dns_resolver.resource_group_name == "rg-conn-dns-prod-cus-01" &&
       output.outputs.hub_virtual_networks.primary.private_dns_resolver.subnet_name == "snet-conn-dnsin-01" &&
       output.outputs.hub_virtual_networks.primary.private_dns_resolver.subnet_address_prefix == "10.152.104.192/28" &&

@@ -174,6 +174,7 @@ variable "hub_virtual_networks" {
         is_default = optional(bool, true)
         name       = optional(string)
         public_ip_config = optional(object({
+          ip_tags                 = optional(map(string), {})
           ip_version              = optional(string, "IPv4")
           name                    = optional(string)
           resource_group_name     = optional(string)
@@ -190,6 +191,7 @@ variable "hub_virtual_networks" {
         is_default = optional(bool, false)
         name       = optional(string)
         public_ip_config = optional(object({
+          ip_tags                 = optional(map(string), {})
           ip_version              = optional(string, "IPv4")
           name                    = optional(string)
           resource_group_name     = optional(string)
@@ -205,6 +207,7 @@ variable "hub_virtual_networks" {
       management_ip_configuration = optional(object({
         name = optional(string)
         public_ip_config = optional(object({
+          ip_tags                 = optional(map(string), {})
           ip_version              = optional(string, "IPv4")
           name                    = optional(string)
           resource_group_name     = optional(string)
@@ -1360,4 +1363,3 @@ DESCRIPTION
     error_message = "When route_table_reference_key is 'Firewall', hub_virtual_network.route_table_firewall_enabled must be true."
   }
 }
-

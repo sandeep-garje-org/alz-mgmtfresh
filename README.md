@@ -57,6 +57,15 @@ The Premium Firewall policy uses IDPS Alert mode, configured through
 IDPS detects and alerts without blocking matching traffic; inspection requires
 the running Premium Firewall to be attached to this policy.
 
+The connectivity module is pinned to `0.17.5`, which forwards firewall public IP
+`ip_tags`. The firewall data/management and VPN gateway public IPs explicitly
+preserve `FirstPartyUsage = "/Unprivileged"`, observed on these IPs in this
+subscription. This is an IP tag, not a resource tag; removing it forces public IP
+replacement and fails while an IP is attached to the firewall or gateway.
+The starter's three firewall public IP schemas also expose `ip_tags` so Terraform
+does not discard the setting. Review this subscription-specific value before
+reusing the configuration elsewhere. Do not edit downloaded module caches.
+
 Bootstrap owns its group and unpeered VNet, runners, state storage, private endpoints,
 registry, and identities. The optional `bootstrap_resource_group_name` input selects
 consolidation; null preserves the original separate-group behavior for other callers.
